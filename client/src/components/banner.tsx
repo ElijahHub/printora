@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { Sparkles, Star, Truck } from "lucide-react";
+import { cn, container } from "@/lib/utils";
 
 const bannerImg = [1, 2, 3, 4, 5, 6];
 
@@ -22,8 +23,12 @@ const imgIcons = [
 
 export default function Banner() {
   return (
-    <section className="bg-gradient-to-b from-[#ddfee8] to-white lg:grid  border-b mb-10">
-      <div className="mx-auto container px-4 py-32 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:justify-between md:gap-4 ">
+    <section className="bg-gradient-to-b from-[#ddfee8] to-white lg:grid  border-b ">
+      <div
+        className={cn(
+          "py-32 sm:py-24 md:grid md:grid-cols-2 md:items-center md:justify-between md:gap-4"
+        ,container)}
+      >
         <div className="w-full text-left ">
           <h5 className="text-xl font-bold text-gray-900 mb-4 ">
             Premium Print-On-Demand

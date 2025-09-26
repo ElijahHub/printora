@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getUserProfileInfo } from "@/hooks/useGoogleAuth";
+import { container, cn } from "@/lib/utils";
 
 const menus = [
   {
@@ -65,8 +66,8 @@ export default function Header() {
   }, [setUserDetail]);
 
   return (
-    <nav className="bg-white shadow-sm px-4 py-2 fixed top-0 left-0 w-full z-50">
-      <div className="flex items-center p-3 container mx-auto ">
+    <nav className="bg-white shadow-sm py-2 fixed top-0 left-0 w-full z-50 ">
+      <div className={cn("flex items-center p-3", container)}>
         {/* logo */}
         <div className="flex justify-center gap-2 md:justify-start mr-10 ">
           <Link href="/" className="flex items-center gap-2 font-medium">
@@ -78,7 +79,7 @@ export default function Header() {
         </div>
 
         {/* navLinks */}
-        <ul className="hidden md:flex space-x-6 text-gray-700 text-lg mr-auto font-bold  ">
+        <ul className="hidden md:flex space-x-6 mr-auto text-gray-700 text-md font-medium ">
           {menus.map((links, i) => (
             <li
               key={i}
@@ -136,7 +137,7 @@ export default function Header() {
             <div className="flex items-center gap-3">
               <Link
                 href="/auth/sign-in"
-                className="font-bold text-lg text-[#555]"
+                className="font-medium text-md text-[#555]"
               >
                 Signin
               </Link>
@@ -179,7 +180,7 @@ export default function Header() {
           </button>
         </div>
 
-        <ul className="flex flex-col gap-3 px-3 py-5 ">
+        <ul className="flex flex-col gap-3 px-3 py-5 text-gray-700 text-md font-medium ">
           {menus.map((links, i) => (
             <li
               key={i}
@@ -236,7 +237,7 @@ export default function Header() {
             <div className="flex items-center gap-3">
               <Link
                 href="/auth/sign-in"
-                className="font-bold text-lg text-[#555]"
+                className="font-medium text-md text-[#555]"
               >
                 Signin
               </Link>
