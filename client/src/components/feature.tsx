@@ -6,10 +6,10 @@ import { container, cn } from "@/lib/utils";
 
 export default function Feature() {
   return (
-    <section className="py-10 border-b mb-20">
+    <section className="py-10 border-b">
       <div className={cn("py-5", container)}>
         <div className="flex flex-col gap-1 mb-4 ">
-          <h2 className="text-left font-medium text-2xl ">
+          <h2 className="text-left font-medium text-3xl ">
             Featured Collections
           </h2>
           <p className="text-left text-sm text-gray-400">
@@ -32,7 +32,7 @@ export default function Feature() {
               </div>
 
               <div className="px-4 py-3 flex flex-col gap-2 ">
-                <h5 className="text-left font-medium">Essentials Tees</h5>
+                <h5 className="text-left font-medium text-lg">Essentials Tees</h5>
                 <p className="text-left text-sm text-gray-400">
                   Ultra-soft fabrics in modern cuts, Your design, perfected
                 </p>

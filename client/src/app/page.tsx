@@ -1,4 +1,12 @@
-import { Banner, Feature, Header } from "@/components";
+import {
+  Banner,
+  Feature,
+  Header,
+  Process,
+  Products,
+  Reviews,
+  CTA,
+} from "@/components";
 
 export default function Home() {
   return (
@@ -10,6 +18,10 @@ export default function Home() {
       {/* Category List */}
       <Feature />
       {/* Product List */}
+      <Products />
+      <CTA />
+      <Process />
+      <Reviews />
       {/* Footer */}
     </div>
   );
