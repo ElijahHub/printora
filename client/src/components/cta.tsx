@@ -10,7 +10,7 @@ export default function CTA() {
           Want something unique? Customize you own product.
         </h3>
         <Link href="/shop/category">
-          <Button>Start Customizing</Button>
+          <Button className="cursor-pointer" type="button" >Start Customizing</Button>
         </Link>
       </div>
     </section>

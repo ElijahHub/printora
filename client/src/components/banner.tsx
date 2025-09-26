@@ -26,10 +26,11 @@ export default function Banner() {
     <section className="bg-gradient-to-b from-[#ddfee8] to-white lg:grid  border-b ">
       <div
         className={cn(
-          "py-32 sm:py-24 md:grid md:grid-cols-2 md:items-center md:justify-between md:gap-4"
-        ,container)}
+          "flex justify-center flex-col md:py-32 md:grid md:grid-cols-2 md:items-center md:justify-between md:gap-4",
+          container
+        )}
       >
-        <div className="w-full text-left ">
+        <div className="w-full text-left pt-32 lg:pt-0 ">
           <h5 className="text-xl font-bold text-gray-900 mb-4 ">
             Premium Print-On-Demand
           </h5>

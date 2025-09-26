@@ -6,6 +6,9 @@ import {
   Products,
   Reviews,
   CTA,
+  CTA2,
+  NewsLetter,
+  Footer,
 } from "@/components";
 
 export default function Home() {
@@ -22,7 +25,10 @@ export default function Home() {
       <CTA />
       <Process />
       <Reviews />
+      <NewsLetter />
+      <CTA2 />
       {/* Footer */}
+      <Footer />
     </div>
   );
 }
