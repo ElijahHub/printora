@@ -11,9 +11,12 @@ export function UserDetailProvider({
   children: React.ReactNode;
 }) {
   const [userDetail, setUserDetail] = useState<User | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
 
   return (
-    <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+    <UserDetailContext.Provider
+      value={{ userDetail, setUserDetail, loading, setLoading }}
+    >
       {children}
     </UserDetailContext.Provider>
   );

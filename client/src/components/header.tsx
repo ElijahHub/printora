@@ -1,10 +1,11 @@
 "use client";
 
 import { useUserDetail } from "@/context/UserDetailContext";
-import { Heart, Menu, ShoppingCart, X } from "lucide-react";
+import { GalleryVerticalEnd, Heart, Menu, ShoppingCart, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getUserProfileInfo } from "@/hooks/useGoogleAuth";
 
 const menus = [
   {
@@ -41,16 +42,39 @@ const menus = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { userDetail: user } = useUserDetail();
+
+  const { setUserDetail } = useUserDetail();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const stored = localStorage.getItem("tokenResponse");
+    if (!stored) return;
+
+    try {
+      const tokenResponse = JSON.parse(stored);
+      if (tokenResponse?.access_token)
+        getUserProfileInfo({
+          access_token: tokenResponse.access_token,
+          setUserDetail,
+        });
+    } catch (err) {
+      console.error("Invalid token in localStorage:", err);
+      localStorage.removeItem("tokenResponse");
+    }
+  }, [setUserDetail]);
+
   return (
     <nav className="bg-white shadow-sm px-4 py-2 fixed top-0 left-0 w-full z-50">
       <div className="flex items-center p-3 container mx-auto ">
         {/* logo */}
-        <div className="flex items-center gap-2 mr-10">
-          <div className="w-[30px] h-[30px] rounded-lg bg-primary "></div>
-          <div className="flex items-center text-2xl text-primary">
-            <p className="text-[#333]">PRIN</p>
-            <span>TORA</span>
-          </div>
+        <div className="flex justify-center gap-2 md:justify-start mr-10 ">
+          <Link href="/" className="flex items-center gap-2 font-medium">
+            <div className="bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md">
+              <GalleryVerticalEnd className="size-4" />
+            </div>
+            Printora.
+          </Link>
         </div>
 
         {/* navLinks */}
@@ -88,13 +112,13 @@ export default function Header() {
         {/* Right Section */}
         <div className="hidden md:flex items-center space-x-4">
           <Link
-            href={user ? "/shop/cart" : "/sign-in"}
+            href={user ? "/shop/cart" : "/auth/sign-in"}
             className="hover:text-primary/60"
           >
             <ShoppingCart size={22} />
           </Link>
           <Link
-            href={user ? "/shop/wishlist" : "/sign-in"}
+            href={user ? "/shop/wishlist" : "/auth/sign-in"}
             className="hover:text-primary/60"
           >
             <Heart size={22} />
@@ -110,12 +134,15 @@ export default function Header() {
             />
           ) : (
             <div className="flex items-center gap-3">
-              <Link href="/sign-in" className="font-bold text-lg text-[#555]">
+              <Link
+                href="/auth/sign-in"
+                className="font-bold text-lg text-[#555]"
+              >
                 Signin
               </Link>
               <h1>|</h1>
               <Link
-                href="/sign-up"
+                href="/auth/sign-up"
                 className="px-3 py-2 bg-primary/75 text-white rounded-lg hover:bg-primary"
               >
                 Get Started
@@ -139,12 +166,13 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between px-4 py-3 border-b">
-          <div className="flex items-center gap-2 mr-10">
-            <div className="w-[30px] h-[30px] rounded-lg bg-primary "></div>
-            <div className="flex items-center text-2xl text-primary">
-              <p className="text-[#333]">PRIN</p>
-              <span>TORA</span>
-            </div>
+          <div className="flex justify-center gap-2 md:justify-start">
+            <Link href="/" className="flex items-center gap-2 font-medium">
+              <div className="bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md">
+                <GalleryVerticalEnd className="size-4" />
+              </div>
+              Printora.
+            </Link>
           </div>
           <button onClick={() => setIsOpen(false)} className="text-gray-700">
             <X size={28} />
@@ -184,13 +212,13 @@ export default function Header() {
 
         <div className="flex items-center space-x-4 px-3 border-t pt-4  ">
           <Link
-            href={user ? "/shop/cart" : "/sign-in"}
+            href={user ? "/shop/cart" : "/auth/sign-in"}
             className="hover:text-primary/60"
           >
             <ShoppingCart size={22} />
           </Link>
           <Link
-            href={user ? "/shop/wishlist" : "/sign-in"}
+            href={user ? "/shop/wishlist" : "/auth/sign-in"}
             className="hover:text-primary/60"
           >
             <Heart size={22} />
@@ -206,12 +234,15 @@ export default function Header() {
             />
           ) : (
             <div className="flex items-center gap-3">
-              <Link href="/sign-in" className="font-bold text-lg text-[#555]">
+              <Link
+                href="/auth/sign-in"
+                className="font-bold text-lg text-[#555]"
+              >
                 Signin
               </Link>
               <h1>|</h1>
               <Link
-                href="/sign-up"
+                href="/auth/sign-up"
                 className="px-3 py-2 bg-primary/75 text-white rounded-lg hover:bg-primary"
               >
                 Get Started

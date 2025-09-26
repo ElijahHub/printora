@@ -7,4 +7,11 @@ export interface User {
 export interface UserDetailContextType {
   userDetail: User | undefined;
   setUserDetail: React.Dispatch<React.SetStateAction<User | undefined>>;
+  loading: boolean;
+  setLoading(val: boolean): void;
+}
+
+export interface GetUserProfileInfoType {
+  access_token: string;
+  setUserDetail: React.Dispatch<React.SetStateAction<User | undefined>>;
 }
