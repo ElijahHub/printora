@@ -1,4 +1,4 @@
-import { axiosClient } from "@/lib/utils";
+import { axiosClient } from "@/lib/axiosClient";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useUserDetail } from "@/context/UserDetailContext";
+import { useUserDetail } from "@/context/user-detail-context";
 import { GetUserProfileInfoType, User } from "@/types";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
@@ -52,9 +52,9 @@ export async function getUserProfileInfo({
   }
 }
 
-async function saveNewUser(user: User) {
+export async function saveNewUser(user: User) {
   const result = await axios.post("api/users", {
-    name: user.name,
+    fullName: user.name,
     email: user.email,
     picture: user.picture,
   });

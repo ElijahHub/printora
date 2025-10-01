@@ -14,8 +14,6 @@ import {
 export default function Home() {
   return (
     <div className="">
-      {/* Header */}
-      <Header />
       {/* Hero */}
       <Banner />
       {/* Category List */}
@@ -27,8 +25,6 @@ export default function Home() {
       <Reviews />
       <NewsLetter />
       <CTA2 />
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

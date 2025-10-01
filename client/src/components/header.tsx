@@ -1,6 +1,6 @@
 "use client";
 
-import { useUserDetail } from "@/context/UserDetailContext";
+import { useUserDetail } from "@/context/user-detail-context";
 import { GalleryVerticalEnd, Heart, Menu, ShoppingCart, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -70,7 +70,10 @@ export default function Header() {
       <div className={cn("flex items-center p-3", container)}>
         {/* logo */}
         <div className="flex justify-center gap-2 md:justify-start mr-10 ">
-          <Link href="/" className="flex items-center gap-2 font-medium">
+          <Link
+            href="/"
+            className="flex items-center gap-2 font-medium text-[#333] "
+          >
             <div className="bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md">
               <GalleryVerticalEnd className="size-4" />
             </div>

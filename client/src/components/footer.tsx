@@ -51,8 +51,8 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="py-10 bg-[#ddfee8] ">
-      <div className={cn("", container)}>
+    <footer className="py-10 bg-gradient-to-b to-[#9fcaad] from-white text-[#333] border-t ">
+      <div className={cn("text-gray-700 text-md font-medium", container)}>
         <div className="flex justify-between flex-col items-center lg:flex-row">
           <div className="">
             <div className="flex justify-center gap-2 md:justify-start mr-10 ">
