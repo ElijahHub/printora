@@ -6,6 +6,14 @@ import { Button } from "@/components/ui/button";
 import ProductCard from "./product-card";
 
 export default function Cart() {
+  const stateObj = {
+    cartItem : [],
+    pageSize: 4,
+    currentPage: 1,
+  }
+
+
+
   const items: CartItemProps[] = [
     {
       id: "1",
